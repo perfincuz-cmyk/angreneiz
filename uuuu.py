@@ -2554,7 +2554,7 @@ Keep your answers concise and relevant to the user's query."""
 
 
 # ==================== BOTNI ISHGA TUSHIRISH ====================
-def run_bot():
+if __name__ == "__main__":
     init_db()  # Ma'lumotlar bazasini ishga tushirish
     logger.info("=" * 50)
     logger.info("🤖 Angren EIZ Bot ishga tushmoqda...")
@@ -2569,14 +2569,4 @@ def run_bot():
     logger.info("✅ Yer maydonlari boshqaruvi tizimi faollashtirildi.")
     logger.info("=" * 50)
 
-    # Botni abadiy ishlashini ta'minlash
-    while True:
-        try:
-            bot.polling(none_stop=True, timeout=60)
-        except Exception as e:
-            logger.error(f"❌ Botda xatolik yuz berdi: {e}")
-            logger.info("🔄 10 soniyadan keyin qayta ishga tushirilmoqda...")
-            time.sleep(10)
-
-if __name__ == "__main__":
-    run_bot()
+    bot.polling(none_stop=True)
